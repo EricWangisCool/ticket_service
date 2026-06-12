@@ -7,6 +7,10 @@ state = {
     "tickets": 10
 }
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "healthy"}), 200
+
 @app.route('/api/v1/ticket', methods=['POST'])
 def buy_ticket():
     if state["tickets"] <= 0:
